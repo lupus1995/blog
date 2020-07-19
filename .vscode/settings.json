@@ -1,0 +1,12 @@
+{
+    "editor.minimap.enabled": false,
+    "[php]": {
+        "editor.formatOnSave": true,
+        "editor.autoClosingBrackets": "always",
+        "editor.matchBrackets": "always",
+    },
+    // "php-cs-fixer.executable": "D:\\OpenServer\\domains\\yii2.com\\.php-cs.phar",
+    // "php-cs-fixer.configFile": "D:\\OpenServer\\domains\\yii2.com\\.php_cs"
+    "vscode-php-cs-fixer.toolPath": "D:\\OpenServer\\domains\\yii2.com\\php_cs.phar",
+    "vscode-php-cs-fixer.config": "D:\\OpenServer\\domains\\yii2.com\\.php_cs"
+}

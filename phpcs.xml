@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<ruleset name="PSR2">
+  <description>The PSR2 coding standard.</description>
+  <rule ref="PSR2">
+    <exclude name="PSR1.Methods.CamelCapsMethodName"/>
+    <exclude name="PSR1.Classes.ClassDeclaration"/>
+    <exclude name="PEAR.NamingConventions.ValidClassName.Invalid" />
+    <exclude name="PEAR.Commenting.FileComment"/>
+    
+    <!-- <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" /> -->
+  </rule>
+  <!-- <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" /> -->
+  <file>app/</file>
+  <exclude-pattern>vendor</exclude-pattern>
+  <exclude-pattern>resources</exclude-pattern>
+  <exclude-pattern>database/</exclude-pattern>
+  <exclude-pattern>storage/</exclude-pattern>
+  <exclude-pattern>node_modules/</exclude-pattern>
+  <exclude-pattern>migrations/</exclude-pattern>
+</ruleset>
