@@ -14,6 +14,7 @@ class m200719_122616_tablePost extends Migration
     {
         $this->createTable('post', [
             'id' => $this->primaryKey(),
+            'categoryId' => $this->integer()->notNull(),
             'title' => $this->string(255)->notNull(),
             'description' => $this->text()->notNull(),
             'image' => $this->string(255),
