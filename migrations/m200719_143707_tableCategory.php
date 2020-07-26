@@ -14,11 +14,11 @@ class m200719_143707_tableCategory extends Migration
     {
         $this->createTable('categories', [
             'id' => $this->primaryKey(),
-            'title' => $this->string(255)->unique(),
-            'link' => $this->string(255),
+            'title' => $this->string(255)->unique()->notNull(),
+            'slug' => $this->string(255)->notNull(),
             'parentId' => $this->integer()->defaultValue(null),
-            'createdAt' => $this->dateTime(),
-            'updatedAt' => $this->dateTime(),
+            'createdAt' => $this->integer()->notNull(),
+            'updatedAt' => $this->integer()->notNull(),
         ]);
     }
 
