@@ -12,10 +12,10 @@ class m200721_191504_categoryPost extends Migration
      */
     public function safeUp()
     {
-        $this->createIndex('idx-post-categoryId', 'post', 'categoryId');
+        $this->createIndex('idx-post-categoryId', 'posts', 'categoryId');
         $this->addForeignKey(
             'fk-post-categoryId',
-            'post',
+            'posts',
             'categoryId',
             'categories',
             'id',
@@ -28,7 +28,7 @@ class m200721_191504_categoryPost extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('fk-post-categoryId', 'post');
-        $this->dropIndex('idx-post-categoryId', 'post');
+        $this->dropForeignKey('fk-post-categoryId', 'posts');
+        $this->dropIndex('idx-post-categoryId', 'posts');
     }
 }

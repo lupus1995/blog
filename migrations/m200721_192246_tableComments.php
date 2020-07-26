@@ -23,7 +23,7 @@ class m200721_192246_tableComments extends Migration
             'fk-comments-postId',
             'comments',
             'postId',
-            'post',
+            'posts',
             'id',
             'CASCADE'
         );
