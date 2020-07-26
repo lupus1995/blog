@@ -68,6 +68,11 @@ class Categories extends \yii\db\ActiveRecord
         ];
     }
 
+    public function fields()
+    {
+        return ['id', 'title', 'slug'];
+    }
+
     /**
      * Gets query for [[Posts]].
      *

@@ -72,6 +72,11 @@ class Posts extends \yii\db\ActiveRecord
         ];
     }
 
+    public function fields()
+    {
+        return ['id', 'title', 'description', 'image'];
+    }
+
     /**
      * Gets query for [[Comments]].
      *
