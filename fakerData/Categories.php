@@ -4,8 +4,14 @@ namespace app\fakerData;
 
 use app\models\Categories as ModelsCategories;
 
+/**
+ * класс для генерации
+ */
 class Categories
 {
+    /**
+     * название категорий по умолчанию
+     */
     private $categories = [
         'Природа',
         'Города',
@@ -14,13 +20,10 @@ class Categories
         'Животные'
     ];
 
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
     /**
-     *
+     * генерация категорий
+     * @var string $category
+     * @var app\models\Categories $model
      */
     public function generatedCategories()
     {
@@ -28,7 +31,6 @@ class Categories
             $model = new ModelsCategories();
             $model->title = $category;
             $model->slug = \yii\helpers\Inflector::slug($category);
-            // $model->timestamp->touch();
             $model->save();
         }
     }

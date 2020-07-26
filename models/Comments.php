@@ -6,25 +6,24 @@ use Yii;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "categories".
+ * This is the model class for table "comments".
  *
  * @property int $id
- * @property string $title
- * @property string $slug
- * @property int|null $parentId
+ * @property int $postId
+ * @property string $text
  * @property int $createdAt
  * @property int $updatedAt
  *
- * @property Posts[] $posts
+ * @property Posts $post
  */
-class Categories extends \yii\db\ActiveRecord
+class Comments extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'categories';
+        return 'comments';
     }
 
     /**
@@ -33,10 +32,10 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'slug'], 'required'],
-            [['parentId', 'createdAt', 'updatedAt'], 'integer'],
-            [['title', 'slug'], 'string', 'max' => 255],
-            [['title'], 'unique'],
+            [['postId', 'text'], 'required'],
+            [['postId', 'createdAt', 'updatedAt'], 'integer'],
+            [['text'], 'string'],
+            [['postId'], 'exist', 'skipOnError' => true, 'targetClass' => Posts::className(), 'targetAttribute' => ['postId' => 'id']],
         ];
     }
 
@@ -47,9 +46,8 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'slug' => 'Slug',
-            'parentId' => 'Parent ID',
+            'postId' => 'Post ID',
+            'text' => 'Text',
             'createdAt' => 'Created At',
             'updatedAt' => 'Updated At',
         ];
@@ -69,12 +67,12 @@ class Categories extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Posts]].
+     * Gets query for [[Post]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPosts()
+    public function getPost()
     {
-        return $this->hasMany(Posts::className(), ['categoryId' => 'id']);
+        return $this->hasOne(Posts::className(), ['id' => 'postId']);
     }
 }

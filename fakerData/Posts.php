@@ -9,7 +9,10 @@ use app\models\Posts as ModelsPosts;
 class Posts
 {
     /**
-     *
+     * @var Faker\Factory $faker;
+     * @var app\models\Categories[] $categories;
+     * @var app\models\Categories $category;
+     * @var app\models\Posts $post;
      */
     public function generatedPost()
     {
@@ -23,7 +26,6 @@ class Posts
                 $post->image = $faker->imageUrl($width = 640, $height = 480);
                 $post->categoryId = $category->id;
                 $post->save();
-                var_dump($post->title);
             }
         }
     }

@@ -15,7 +15,9 @@ class m200721_192246_tableComments extends Migration
         $this->createTable('comments', [
             'id' => $this->primaryKey(),
             'postId' => $this->integer()->notNull(),
-            'text' => $this->text(),
+            'text' => $this->text()->notNull(),
+            'createdAt' => $this->integer()->notNull(),
+            'updatedAt' => $this->integer()->notNull(),
         ]);
 
         $this->createIndex('idx-comments-postId', 'comments', 'postId');

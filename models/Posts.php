@@ -77,10 +77,10 @@ class Posts extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    // public function getComments()
-    // {
-    //     return $this->hasMany(Comments::className(), ['postId' => 'id']);
-    // }
+    public function getComments()
+    {
+        return $this->hasMany(Comments::className(), ['postId' => 'id']);
+    }
 
     /**
      * Gets query for [[Category]].
