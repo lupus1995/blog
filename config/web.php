@@ -23,7 +23,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\UserIdentity',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -50,11 +50,15 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['categories', 'posts']],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['categories', 'posts', 'comments']],
                 [
                     'pattern' => 'categories/<categoryId:\d+>/posts',
                     'route' => 'posts/index',
-                ]
+                ],
+                [
+                    'pattern' => 'posts/<postId:\d+>/comments',
+                    'route' => 'comments/index',
+                ],
             ],
         ],
     ],

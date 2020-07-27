@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use app\models\behaviors\SlugBehavior;
 
 /**
  * This is the model class for table "categories".
@@ -33,7 +34,7 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'slug'], 'required'],
+            [['title'], 'required'],
             [['parentId', 'createdAt', 'updatedAt'], 'integer'],
             [['title', 'slug'], 'string', 'max' => 255],
             [['title'], 'unique'],
@@ -63,6 +64,13 @@ class Categories extends \yii\db\ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['createdAt', 'updatedAt'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updatedAt'],
+                ],
+            ],
+            [
+                'class' => SlugBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['slug'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['slug'],
                 ],
             ],
         ];

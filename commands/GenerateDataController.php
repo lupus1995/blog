@@ -7,18 +7,20 @@ use yii\helpers\Console;
 use yii\console\Controller;
 use app\fakerData\Categories;
 use app\fakerData\Comments;
+use app\fakerData\User;
 
 class GenerateDataController extends Controller
 {
     /**
      * генерация данных для всего приложения
      */
-    public function generateData()
+    public function actionData()
     {
         $this->stdout("Генерация данных началась\n", Console::BOLD);
         $this->actionCategory();
         $this->actionPost();
         $this->actionComment();
+        $this->actionUser();
         $this->stdout("Генерация данных закончилась\n", Console::BOLD);
     }
 
@@ -53,5 +55,16 @@ class GenerateDataController extends Controller
         $faker = new Comments;
         $faker->generatedComments();
         $this->stdout("Посты сгенерированы\n", Console::BG_GREEN);
+    }
+
+    /**
+     * генерация пользователя
+     */
+    public function actionUser()
+    {
+        $this->stdout("Генерация пользователя\n", Console::BOLD);
+        $faker = new User;
+        $faker->generatedUser();
+        $this->stdout("Пользователь сгенерированы\n", Console::BG_GREEN);
     }
 }

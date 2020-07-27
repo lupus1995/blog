@@ -32,7 +32,10 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['postId', 'text'], 'required'],
+            [['text'], 'required'],
+            ['postId', 'required', 'when' => function ($model) {
+                return !$model->id;
+            }],
             [['postId', 'createdAt', 'updatedAt'], 'integer'],
             [['text'], 'string'],
             [['postId'], 'exist', 'skipOnError' => true, 'targetClass' => Posts::className(), 'targetAttribute' => ['postId' => 'id']],
@@ -64,6 +67,11 @@ class Comments extends \yii\db\ActiveRecord
                 ],
             ],
         ];
+    }
+
+    public function fields()
+    {
+        return ['text'];
     }
 
     /**

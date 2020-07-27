@@ -35,7 +35,10 @@ class Posts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['categoryId', 'title', 'description', 'image'], 'required'],
+            [['title', 'description', 'image'], 'required'],
+            ['categoryId', 'required', 'when' => function ($model) {
+                return !$model->id;
+            }],
             [['categoryId', 'createdAt', 'updatedAt'], 'integer'],
             [['description'], 'string'],
             [['title', 'image'], 'string', 'max' => 255],
